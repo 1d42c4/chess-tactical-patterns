@@ -1,0 +1,348 @@
+{
+  "number": 3,
+  "slug": "chess-tactical-patterns",
+  "title": "See Tactical Patterns",
+  "goal": "Recognize a fork, pin or skewer, then prove that the geometry actually works.",
+  "lessons": [
+    {
+      "id": "03.1",
+      "title": "A fork must come with time",
+      "idea": "A knight fork attacks two targets. When one target is the king, the opponent must answer the check, often leaving no time to save the other target.",
+      "facts": [
+        "The knight on d5 can jump to e7.",
+        "From e7 it attacks the king on g8 and the rook on c8.",
+        "No black piece can capture the knight on e7 in response to the check."
+      ],
+      "explain": [
+        "Ne7+ makes a double attack with check. Black must move the king; ...Kf8 is one legal reply. The knight then takes the rook with Nxc8.",
+        "Check the landing square before celebrating the pattern. A fork fails if the forking piece can be captured, if the second target moves with check, or if the first target can answer while saving the second. Here the king cannot capture the knight, and the rook cannot remove the check."
+      ],
+      "caution": "A diagram that resembles a fork is only a suggestion. Name both attacked squares, inspect captures of the knight, and calculate one move beyond the apparent win.",
+      "questions": [
+        "Find a knight move that attacks the king and rook at the same time.",
+        "Give a legal king reply, followed by the knight's capture.",
+        "Why does Black not have time to move the rook first?"
+      ],
+      "answers": [
+        "Nd7+ attacks f8 and b8 from d7. The board has shifted, so use the knight's actual L-shaped moves rather than remembering e7 from Model A.",
+        "After ...Kg8, Nxb8 captures the rook. Other legal king moves still leave the rook forked. Check that no black pawn attacks the knight's landing square d7.",
+        "The king is in check. A rook move that does not capture the knight or otherwise remove the knight check is illegal. The checking component supplies the time needed to collect the second target."
+      ],
+      "transfer": "On an empty board, place a knight on d4 and name all eight attacked squares. Then place a king and rook on two of those squares and test whether the fork is legal.",
+      "recall": [
+        "What must you test before trusting a knight fork?",
+        "Whether the landing square is safe, whether both targets are attacked, and whether the reply can remove the check while saving material."
+      ],
+      "positions": {
+        "A": {
+          "fen": "2r3k1/pp3ppp/8/3N4/8/8/PP3PPP/6K1 w - - 0 1",
+          "opening_moves": "",
+          "line": "Ne7+ Kf8 Nxc8",
+          "alternative": "",
+          "purpose": "tactic",
+          "validation": {
+            "id": "03.1A",
+            "title": "A fork must come with time",
+            "fen": "2r3k1/pp3ppp/8/3N4/8/8/PP3PPP/6K1 w - - 0 1",
+            "line": "Ne7+ Kf8 Nxc8",
+            "bad": "",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Ne7+",
+                "score": "+646",
+                "depth": 18
+              },
+              {
+                "san": "Nc3",
+                "score": "-640",
+                "depth": 18
+              },
+              {
+                "san": "f4",
+                "score": "-670",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "+654"
+          }
+        },
+        "B": {
+          "fen": "1r3k2/pp3ppp/8/2N5/8/8/PP3PPP/6K1 w - - 0 1",
+          "opening_moves": "",
+          "line": "Nd7+ Kg8 Nxb8",
+          "alternative": "",
+          "purpose": "tactic",
+          "validation": {
+            "id": "03.1B",
+            "title": "A fork must come with time",
+            "fen": "1r3k2/pp3ppp/8/2N5/8/8/PP3PPP/6K1 w - - 0 1",
+            "line": "Nd7+ Kg8 Nxb8",
+            "bad": "",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Nd7+",
+                "score": "+29",
+                "depth": 18
+              },
+              {
+                "san": "Kf1",
+                "score": "-546",
+                "depth": 18
+              },
+              {
+                "san": "g3",
+                "score": "-608",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "+42"
+          }
+        }
+      }
+    },
+    {
+      "id": "03.2",
+      "title": "A pin restricts particular moves",
+      "idea": "An absolute pin forbids moves that expose your king to check. It does not freeze a piece by a special rule; normal king-safety rules determine exactly which moves remain legal.",
+      "facts": [
+        "White's rook on e1 points at the black king on e8.",
+        "The black knight on e7 is the only piece blocking that line.",
+        "Every knight move would leave the e-file, exposing the king."
+      ],
+      "explain": [
+        "Black cannot move the knight while the king stays on e8 and the pin remains. A knight cannot slide along the pin line, so all of its jumps would uncover a rook check on its own king.",
+        "...Kf7 is a legal way to step out of the pin. This is a rule demonstration, not a claim that Black can save the ending against best play. Once the king is off the e-file, moving the knight no longer exposes that particular check."
+      ],
+      "caution": "Pinned pieces still occupy and attack squares. For king moves, a square attacked by a pinned piece is still treated as attacked. Do not let your king capture a defended piece just because its defender is pinned.",
+      "questions": [
+        "What piece replaced the pinned knight?",
+        "Is ...Rxe1+ legal? Trace the rook's entire path.",
+        "State a precise rule that works for both diagrams."
+      ],
+      "answers": [
+        "A black rook now stands on e7. Unlike a knight, a rook can move along the e-file and remain between the white rook and its king.",
+        "Yes. The squares e6 through e2 are empty. ...Rxe1+ captures the pinning rook and removes the threat to the black king. It also checks White along the first rank; Kh2 is a legal reply.",
+        "A move is illegal if it leaves your own king in check. A pinned slider may move along the pin line or capture the attacker if the resulting king position is safe. \"A pinned piece cannot move\" is an unreliable shortcut."
+      ],
+      "transfer": "Set up a rook pin, then replace the pinned piece with a knight, bishop and rook. For each, list legal moves instead of assuming the answer is unchanged.",
+      "recall": [
+        "Can a pinned rook capture the rook pinning it?",
+        "Yes, if the path is clear and the capture leaves its own king safe."
+      ],
+      "positions": {
+        "A": {
+          "fen": "4k3/4n3/8/8/8/8/8/4R1K1 b - - 0 1",
+          "opening_moves": "",
+          "line": "Kf7",
+          "alternative": "",
+          "purpose": "legality",
+          "validation": {
+            "id": "03.2A",
+            "title": "A pin restricts particular moves",
+            "fen": "4k3/4n3/8/8/8/8/8/4R1K1 b - - 0 1",
+            "line": "Kf7",
+            "bad": "",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Kd7",
+                "score": "-7",
+                "depth": 18
+              },
+              {
+                "san": "Kf7",
+                "score": "-9",
+                "depth": 18
+              },
+              {
+                "san": "Kd8",
+                "score": "-11",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "-13",
+            "tablebase": "draw",
+            "tablebase_line": [
+              [
+                "Kf7",
+                "draw"
+              ]
+            ]
+          }
+        },
+        "B": {
+          "fen": "4k3/4r3/8/8/8/8/8/4R1K1 b - - 0 1",
+          "opening_moves": "",
+          "line": "Rxe1+ Kh2",
+          "alternative": "",
+          "purpose": "legality",
+          "validation": {
+            "id": "03.2B",
+            "title": "A pin restricts particular moves",
+            "fen": "4k3/4r3/8/8/8/8/8/4R1K1 b - - 0 1",
+            "line": "Rxe1+ Kh2",
+            "bad": "",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Rxe1+",
+                "score": "+405",
+                "depth": 18
+              },
+              {
+                "san": "Kd8",
+                "score": "0",
+                "depth": 18
+              },
+              {
+                "san": "Kf8",
+                "score": "0",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "+682",
+            "tablebase": "win",
+            "tablebase_line": [
+              [
+                "Rxe1+",
+                "win"
+              ],
+              [
+                "Kh2",
+                "win"
+              ]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "03.3",
+      "title": "A skewer needs a clear line",
+      "idea": "A skewer attacks a valuable front piece and exposes a target behind it. The line must be clear both when the attack begins and after the front piece moves.",
+      "facts": [
+        "The bishop can travel from b5 through c4 to d3.",
+        "From d3, the diagonal d3-e4-f5-g6-h7 contains Black's king and rook.",
+        "The black king must leave the diagonal when checked."
+      ],
+      "explain": [
+        "Bd3+ checks the king on f5. After the illustrative ...Ke5, the bishop takes the rook with Bxh7. The king cannot move onto g6, because the bishop also attacks that square.",
+        "Distinguish the geometry: in a pin the protected target is behind the piece that is restricted; in this skewer the king is the front target and must move, exposing the rook. The resulting capture follows from an open diagonal, not from the pattern's name."
+      ],
+      "caution": "Before moving a bishop onto an attacking diagonal, trace every intervening square. A pawn may block the line and may also capture the bishop on its proposed square.",
+      "questions": [
+        "What does the added pawn on e4 do to the diagonal?",
+        "Is Bd3 check? Calculate Black's simplest reply.",
+        "Give a legal bishop move that avoids losing it to that pawn."
+      ],
+      "answers": [
+        "The e4-pawn interrupts d3-e4-f5-g6-h7 before the line reaches the king. The bishop no longer attacks the king through that square.",
+        "Bd3 is not check, and ...exd3 captures the bishop. A black pawn on e4 attacks d3. White has mistaken a blocked line for the skewer in Model A.",
+        "Be2 is a safe example: b5-c4-d3-e2 is a clear route, and the bishop ends beyond the pawn's attacks. This does not claim White wins the rook ending; it answers the narrower question of preserving the bishop."
+      ],
+      "transfer": "When you spot a bishop tactic, read the whole diagonal aloud, including empty squares. Then ask what can capture the bishop on its new square.",
+      "recall": [
+        "Why does adding a pawn on e4 refute Bd3 in this example?",
+        "It blocks the check to f5 and can capture the bishop with ...exd3."
+      ],
+      "positions": {
+        "A": {
+          "fen": "8/7r/8/1B3k2/8/8/8/6K1 w - - 0 1",
+          "opening_moves": "",
+          "line": "Bd3+ Ke5 Bxh7",
+          "alternative": "",
+          "purpose": "tactic",
+          "validation": {
+            "id": "03.3A",
+            "title": "A skewer needs a clear line",
+            "fen": "8/7r/8/1B3k2/8/8/8/6K1 w - - 0 1",
+            "line": "Bd3+ Ke5 Bxh7",
+            "bad": "",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Bd3+",
+                "score": "+6",
+                "depth": 18
+              },
+              {
+                "san": "Kf2",
+                "score": "0",
+                "depth": 18
+              },
+              {
+                "san": "Kf1",
+                "score": "-14",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "+8",
+            "tablebase": "draw",
+            "tablebase_line": [
+              [
+                "Bd3+",
+                "draw"
+              ],
+              [
+                "Ke5",
+                "draw"
+              ],
+              [
+                "Bxh7",
+                "draw"
+              ]
+            ]
+          }
+        },
+        "B": {
+          "fen": "8/7r/8/1B3k2/4p3/8/8/6K1 w - - 0 1",
+          "opening_moves": "",
+          "line": "Be2",
+          "alternative": "Bd3 exd3",
+          "purpose": "contrast",
+          "validation": {
+            "id": "03.3B",
+            "title": "A skewer needs a clear line",
+            "fen": "8/7r/8/1B3k2/4p3/8/8/6K1 w - - 0 1",
+            "line": "Be2",
+            "bad": "Bd3 exd3",
+            "checkmate": false,
+            "stalemate": false,
+            "candidates": [
+              {
+                "san": "Kf2",
+                "score": "-655",
+                "depth": 18
+              },
+              {
+                "san": "Bc6",
+                "score": "-661",
+                "depth": 18
+              },
+              {
+                "san": "Kg2",
+                "score": "-661",
+                "depth": 18
+              }
+            ],
+            "chosen_score": "-820",
+            "tablebase": "loss",
+            "tablebase_line": [
+              [
+                "Be2",
+                "loss"
+              ]
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
