@@ -4,7 +4,7 @@ Book 03 of **Chess, One Decision at a Time**.
 
 Recognize a fork, pin or skewer, then prove that the geometry actually works.
 
-[Read the full web edition](https://knightway8.github.io/chess-tactical-patterns/) · [Read the 12-page PDF](03_chess_tactical_patterns.pdf) · [Download the replayable PGN](positions.pgn)
+[Read the full web edition](https://1d42c4.github.io/chess-tactical-patterns/) · [Read the 12-page PDF](03_chess_tactical_patterns.pdf) · [Download the replayable PGN](positions.pgn)
 
 ## Three lessons
 
@@ -23,4 +23,4 @@ Each lesson includes a worked board, a position that changes an important detail
 
 Open `index.html` locally or read on GitHub Pages; no build, account, external script, or tracking is required. To report a correction, give the lesson ID, FEN, move and proposed explanation in an issue. Preserve the published edition while reviewing corrections.
 
-[All ten books and earlier collections](https://github.com/knightway8)
+[All ten books and earlier collections](https://github.com/1d42c4)
